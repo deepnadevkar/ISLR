@@ -1,0 +1,30 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww24300\viewh15120\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+
+\f0\fs24 \cf0 Chapter 5: Resampling Methods\
+\
+Conceptual exercises\
+\
+\
+2) In bootstrap, when we sample with replacement, each observation in the bootstrap sample has the same (1/n) probability of equaling the jth observation. \
+\
+	a) 1 - (1/n) \
+	b) 1 - (1/n) \
+	c) when we apply the product rule for a total of n observations, the probability above is now (1 - (1/n))^n.\
+	d) Substituting for n = 5 in c) we get 67.2%\
+	e) Substituting for n = 100 in c) we get 63.4%\
+	f) Substituting for n = 10,000 in c) we get 63.2%\
+	h) the plot asymptotes at about 63% probability as you increase n. \
+\
+3) \
+	a) k-fold cross-validation is derived from taking a finite set of n observations and randomly splitting the data set into k non-overlapping groups. One of these k folds is used as a validation set and the remainder k groups are used as a training set. You keep repeating this step until every group has had a chance of being used as a validation set. The test error is then estimated by taking the mean of the resulting MSE estimates.  \
+	b) Advantages of k- fold over validation set: In the validation set, you are dividing the dataset into two equal parts, so you may lose some power in training the data set because the number of observations available for training will be half of the original dataset. Because of this, the test error rate can be highly variable depending on which observations were included in the training versus testing data. So, you may overestimate the test error rate for the model fit on the entire data set. By using k-fold you overcome these issues, because 1) you can use the entire dataset essentially for training and testing and you calculate the MSE k times to calculate the average MSE on the test data. \
+	   Advantages of k-fold over Leave-one-out-cross-validation (LOOCV): In LOOCV, you are essentially leaving out only one observation at a time and using the remainder observations for training. In other words, LOOCV is a special case of k-fold cross-validation with k = n observations. The drawback is that with LOOCV, if the model is complex and take time to run, then it can be very expensive computationally because the model has to be run n times. LOOCV gives unbiased estimates of the test error, since it uses almost all observations for training. So, it gives a lower bias for test error than k-fold cross validation (however, if you use k = 5 or 10, you can get an intermediate level of bias). But, LOOCV gives a higher variance than k-fold. Why? When we perform LOOCV, we are in effect averaging the outputs of n fitted models, each of which is trained on nearly identical sets of observations (this means that the training sets are very highly correlated). Since the mean of very highly correlated quantities has higher variance than quantities that are not so highly correlated, the test error estimate from LOOCV has higher variance than k-fold. So, there is a bias-variance trade off.  \
+\
+4) If we suppose using some statistical learning method to make a prediction for the response Y for a particular value of the predictor X we might estimate the standard deviation of our prediction by using the bootstrap approach. The bootstrap approach works by repeatedly sampling observations (with replacement) from the original data set\
+\pard\pardeftab720\ql\qnatural
+\cf0 B times, for some large value of B, each time fitting a new model and subsequently obtaining the RMSE of the estimates for all B models.\
+}
